@@ -7,11 +7,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="logintr.css">
     <title>teacher's log in</title>
 </head>
 <body>
-    <h1>Login page</h1>
-    <div class="logintr">
+    <center>
+         <h1>Login page</h1>
+         <div class="logintr">
              <form class="forms" action="logintr.php" method="post">
             <b>
             <div class="container">
@@ -20,7 +22,7 @@
 
             <label>Password:</label> <br> <br>
             <input type="password" class="login" placeholder="input password" name="password" required autofocus> <br> <br>
-            <i>Forgot Password? <a href="resetPassword.php">Reset Pasword </a> </i>  <br> <br> <br>
+            <i>Forgot Password? <a href="resetPassword.php">Reset Password </a> </i>  <br> <br> <br>
 
             <center>
                 <input type="submit" class="buttons" value="Log in" name="submit"> <input type="reset" class="buttons" value="Clear"> <br> <br> 
@@ -30,6 +32,7 @@
             </div>
             </b>
         </form>
+        </center>
 
             
         <?php

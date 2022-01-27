@@ -1,0 +1,17 @@
+body{
+
+	background-image: url('KinderCare.jpg');
+	/*background:blue;*/
+}
+.login{
+     border-collapse: collapse;
+     border-color: forestgreen;
+         color: blue;
+}
+.buttons{
+	background: green;
+	pointer-events: visiblePainted;
+}
+.logintr{
+	color:blue;
+}
