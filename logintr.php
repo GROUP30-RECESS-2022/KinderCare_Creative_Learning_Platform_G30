@@ -12,7 +12,7 @@
 <body>
     <h1>Login page</h1>
     <div class="logintr">
-  20.      <form class="forms" action="logintr.php" method="post">
+             <form class="forms" action="logintr.php" method="post">
             <b>
             <div class="container">
             <label>email:</label> <br> <br>
@@ -20,7 +20,7 @@
 
             <label>Password:</label> <br> <br>
             <input type="password" class="login" placeholder="input password" name="password" required autofocus> <br> <br>
-            <i>Forgot Password? <a href="forgotPassword.php">Reset Pasword </a> </i>  <br> <br> <br>
+            <i>Forgot Password? <a href="resetPassword.php">Reset Pasword </a> </i>  <br> <br> <br>
 
             <center>
                 <input type="submit" class="buttons" value="Log in" name="submit"> <input type="reset" class="buttons" value="Clear"> <br> <br> 
@@ -33,54 +33,36 @@
 
             
         <?php
-            if(isset($_POST['submit'])){
+            if(isset($_POST['submit'])){          
                 $conn = mysqli_connect('localhost','root','','recess');
                 $email =mysqli_real_escape_string($conn, $_POST['email']); 
                 $password = mysqli_real_escape_string($conn, $_POST['password']);
-                $query1 = "SELECT *
-                 FROM teacher WHERE email = '$email' AND pass = '$password' limit 1";
-
-                 //$userType = "SELECT userType
-                 //FROM teacher WHERE email = '$email' AND Pass = '$password' limit 1";
-
-                $result= mysqli_query($conn, $query1);
-            
-                $_SESSION['Password'] = $password;
-                $_SESSION['email'] = $email;
-
-                if(mysqli_num_rows($result)==1){
-                $userType = mysqli_fetch_assoc($result);
-                    if($userType["userType"]==='teacher'){
-                 		header('location:dashboards\teacherDashboard.php');
-                    }
-
-                //  	elseif ($userType["userType"]==='lecturer') {
-                //  		header('location:dashboards\lecturerDashboard.php');
-                //  	}
-
-                //  	elseif ($userType["userType"]==='HoD') {
-                //  		header('location:dashboards\hoDDashboard.php');
-                //  	}
-
-                //   elseif ($userType["userType"]==='AR') {
-                //  		header('location:dashboards\ARDashboard.php');
-                // 	}
-                    
-                //  }
-
+              if(!empty($email)&&!empty($password)){
+                $query1 = "SELECT * FROM teacher WHERE email = '$email' AND pass = '$password' limit 1";
+                $result= mysqli_query($conn, $query1); 
+                if ($result){
+                    if(mysqli_num_rows($result)==1){
+                        $userdata = mysqli_fetch_assoc($result);
+                         if(($userdata['pass']===$password)&&($userdata['email']===$email)){
+                            $_SESSION['Password'] = $password;
+                            $_SESSION['email'] = $email;
+                            header('location:teacherDashboard.php');
+                         }  
+                         
+                       else{
+                           echo("Enter correct credentials");
+                        }  
+                }
+              
+                }
                 else{
                 	echo("Enter correct credentials");
                 }
-           
+
+            }
             }
 
         ?>
 </body>
 
-</html>
-
-
-
-
-</body>
 </html>
