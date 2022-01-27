@@ -10,7 +10,7 @@
             
             //if(isset($_POST['submit']))
            if ($_SERVER["REQUEST_METHOD"]=="POST") {
-            $conn = mysqli_connect('localhost','root','','recess');
+           $conn = mysqli_connect('localhost','root','','recess');
             $email =mysqli_real_escape_string($conn, $_POST['email']);
             if(empty($_POST["email"])){
                 $emailError="email is required";
@@ -92,9 +92,11 @@
 
              <i>Already have an account? <a href="login.php">Login</a></i>
         </form>
-            
+<!-- testing a change done by someone else             -->
         
         <script src="formjava.js"></script>
 </body>
 
 </html> 
+    
+ 
